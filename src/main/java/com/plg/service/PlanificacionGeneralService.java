@@ -190,10 +190,12 @@ public class PlanificacionGeneralService {
         // - Inventario actual
         // - Capacidad vs demanda
         
-        // Por ahora, todos abastecidos excepto en horarios nocturnos
-        int hora = momento.getHour();
-        return hora >= 6 && hora <= 22; // Disponible de 6 AM a 10 PM
+        // // Por ahora, todos abastecidos excepto en horarios nocturnos
+        // int hora = momento.getHour();
+        // return hora >= 6 && hora <= 22; // Disponible de 6 AM a 10 PM
+        return almacen.getCantidad() > 0; // Verifica si hay GLP disponible
     }
+
     
     /**
      * ✅ Valida que hay recursos mínimos para planificar

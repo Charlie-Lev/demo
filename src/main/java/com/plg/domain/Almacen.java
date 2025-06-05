@@ -45,10 +45,17 @@ public class Almacen {
         this.y = y;
         this.esPrincipal = esPrincipal ? 1 : 0; // Convertir booleano a entero
         this.capacidad = capacidad;
-        this.cantidad = 0.0; // Inicializar cantidad como 0 por defecto
+        this.cantidad = capacidad; // Inicializar cantidad como 0 por defecto
     }
 
     public boolean getEsPrincipal() {
         return esPrincipal == 1; // Devuelve true si esPrincipal es 1, false en caso contrario
+    }
+        // ✅ Método adicional para inicializar después de cargar desde BD
+    @PostLoad
+    public void inicializarCantidad() {
+        if (this.cantidad == 0.0) {
+            this.cantidad = this.capacidad;
+        }
     }
 }
